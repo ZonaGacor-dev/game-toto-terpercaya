@@ -12,21 +12,46 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 15px;
+            padding: 30px 10px;
             box-sizing: border-box;
-            background-color: #f4f6f9;
+            background: #08080c; /* Latar belakang gelap agar bingkai emas menyala */
             color: #333333;
         }
-        .container {
-            max-width: 700px;
+
+        /* --- BINGKAI EMAS ELEGAN (LUXURY ANIMATED FRAME) --- */
+        .luxury-wrapper {
+            max-width: 720px;
             margin: 0 auto;
             background: #ffffff;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 20px;
+            position: relative;
+            
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.35),
+                0 20px 50px rgba(0, 0, 0, 0.9);
         }
+
+        /* GARIS BINGKAI EMAS BERKILAU BERGERAK */
+        .luxury-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px; right: -4px; bottom: -4px;
+            background: linear-gradient(45deg, #ffd700, #ff8c00, #fff2a3, #cca100, #ffd700);
+            background-size: 400% 400%;
+            border-radius: 24px;
+            z-index: -1;
+            animation: borderGlow 6s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .sampul-wrapper {
             text-align: center;
             margin: 25px 0;
@@ -35,18 +60,21 @@
             width: 100%;
             max-width: 550px;
             height: auto;      
-            border-radius: 8px;
+            border-radius: 12px;
             display: block;
             margin: 0 auto;
+            border: 2px solid #ffd700;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
         .link-utama {
             font-size: 24px;
-            font-weight: bold;
+            font-weight: 800;
             color: #007bff;
             text-decoration: none;
             display: inline-block;
             word-wrap: break-word;
             line-height: 1.4;
+            transition: color 0.3s;
         }
         .link-utama:hover {
             color: #0056b3;
@@ -56,27 +84,139 @@
             text-align: justify; 
             margin-top: 15px;
             font-size: 16px;
+            color: #444444;
         }
+
+        /* --- TOMBOL LOGIN & DAFTAR BERGERAK --- */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        .btn-action {
+            display: inline-block;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 10px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: pulse-animation 1.8s infinite;
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        .btn-login {
+            background: linear-gradient(135deg, #28a745, #155724);
+        }
+        .btn-daftar {
+            background: linear-gradient(135deg, #dc3545, #721c24);
+            animation-delay: 0.3s;
+        }
+        .btn-action:hover {
+            transform: scale(1.08);
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+            }
+            50% {
+                transform: scale(1.04);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* --- KOTAK JACKPOT EMAS KEEMASAN --- */
+        .big-jackpot-box {
+            background: radial-gradient(circle, #1f1f1f 0%, #080808 100%);
+            border: 2px solid #ffd700;
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.35), inset 0 0 15px rgba(255, 215, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .jackpot-header {
+            font-size: 18px;
+            font-weight: 900;
+            color: #ffe875;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            margin-bottom: 5px;
+        }
+
+        /* ANGKA GRADASI EMAS KILAUPAN */
+        .jackpot-number {
+            font-size: 44px;
+            font-weight: 900;
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            margin: 15px 0;
+            word-break: break-all;
+            letter-spacing: 2px;
+            
+            background: linear-gradient(180deg, #fff2a3 0%, #ffd700 45%, #cca100 70%, #ffae00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            
+            filter: drop-shadow(0px 3px 8px rgba(255, 215, 0, 0.6));
+        }
+
+        .jackpot-footer {
+            font-size: 13px;
+            color: #ffeaa7;
+            font-weight: bold;
+            background: rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
         @media (max-width: 600px) {
+            body {
+                padding: 15px 5px;
+            }
+            .luxury-wrapper {
+                padding: 15px;
+            }
             .link-utama {
                 font-size: 19px;
-            }
-            .container {
-                padding: 15px;
             }
             .deskripsi {
                 font-size: 15px;
                 text-align: left;
+            }
+            .btn-action {
+                width: 100%;
+                text-align: center;
+                box-sizing: border-box;
+            }
+            .jackpot-number {
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- WADAH PRANGKO / BINGKAI ELEGAN -->
+    <div class="luxury-wrapper">
 
         <!-- LINK UTAMA DI BAGIAN PALING ATAS -->
-        <div style="text-align: center; margin: 15px 0;">
+        <div style="text-align: center; margin: 15px 0 20px 0;">
             <a href="https://agodatoto.co.bz/" target="_blank" class="link-utama">
                 👉 Situs Game Toto Terpercaya dengan Pilihan Pasaran Lengkap 👈
             </a>
@@ -85,7 +225,7 @@
             </p>
         </div>
 
-        <hr style="border: 0; border-top: 1px solid #eeeeee;">
+        <hr style="border: 0; border-top: 1px solid #e0e0e0;">
 
         <!-- FOTO SAMPUL -->
         <header>
@@ -94,17 +234,34 @@
             </div>
         </header>
 
-        <hr style="border: 0; border-top: 1px solid #eeeeee;">
+        <!-- TOMBOL LOGIN & DAFTAR BERGERAK -->
+        <div class="btn-container">
+            <a href="https://agodatoto.co.bz/" target="_blank" class="btn-action btn-login">
+                🔑 LOGIN
+            </a>
+            <a href="https://agodatoto.co.bz/" target="_blank" class="btn-action btn-daftar">
+                📝 DAFTAR
+            </a>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #e0e0e0;">
 
         <!-- KONTEN UTAMA -->
         <section style="margin: 20px 0;">
-            <h2 style="font-size: 20px; color: #222;">Kenapa Banyak Pemain Memilih AGODATOTO?</h2>
+            <h2 style="font-size: 20px; color: #111; font-weight: 700;">Kenapa Banyak Pemain Memilih AGODATOTO?</h2>
             <p style="line-height: 1.6; font-size: 15px; color: #555;">
                 Karena AGODATOTO menghadirkan kemudahan akses, pilihan permainan yang beragam, proses pendaftaran yang cepat, serta dukungan layanan pelanggan yang responsif untuk membantu kebutuhan pemain.
             </p>
         </section>
 
-        <hr style="border: 0; border-top: 1px solid #eeeeee;">
+        <!-- KOTAK JACKPOT EMAS KEEMASAN -->
+        <div class="big-jackpot-box">
+            <div class="jackpot-header">👑 TOTAL KEMENANGAN MEMBER (LIVE) HARI INI  👑</div>
+            <div class="jackpot-number" id="jackpot-display">Rp 248.350.000</div>
+            <div class="jackpot-footer">✨ Diperbarui Secara Real-Time ✨</div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #e0e0e0;">
 
         <!-- FOOTER -->
         <footer style="text-align: center; padding-top: 10px; color: #888; font-size: 14px;">
@@ -112,6 +269,29 @@
         </footer>
 
     </div>
+
+    <!-- JAVASCRIPT ANIMASI ANGKA REAL-TIME (200 JT - 400 JT & LEBIH CEPAT) -->
+    <script>
+        let currentAmount = 248350000;
+        const display = document.getElementById('jackpot-display');
+
+        function formatRupiah(val) {
+            return 'Rp ' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Dijalankan setiap 1 detik (1000ms) agar pergerakan cepat
+        setInterval(() => {
+            let bonus = Math.floor(Math.random() * 300000) + 150000;
+            currentAmount += bonus;
+            
+            // Jika sudah menyentuh 400 Juta, angka direset ke 200 Juta-an
+            if (currentAmount > 399000000) {
+                currentAmount = 205400000;
+            }
+            
+            display.innerText = formatRupiah(currentAmount);
+        }, 1000);
+    </script>
 
 </body>
 </html>
